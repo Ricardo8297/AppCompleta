@@ -1,0 +1,35 @@
+<div class="container" style="margin-top: 3rem;">
+    <h1 class="text-center"> Garantia Administradores</h1>
+    <div class="col">
+        <div class="card">
+            <div class="card-body">
+                <form ngNativeValidate (submit)="saveNewGarantia()">
+                    <select name="select" name="codigoProducto" class="form-control img-fluid" [(ngModel)]="garantia.codigoProducto">
+                        <option *ngFor="let producto of productos" value={{producto.codigo}} >{{producto.codigo}}</option>
+                        
+                      </select>
+                    <br>
+                    <div class="form-group">
+                        <textarea name="motivo" rows="2" [(ngModel)]="garantia.motivo" placeholder="motivo" class="form-control" required=""></textarea>
+                    </div>
+                    <br>
+                    <!--Usa la variable edit para saber si es true usa update game si no usa savegame-->
+                    <div class="text-center">
+                        <button class="btn btn-success btn-block text-center">
+                        Guardar
+                    </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="d-grid gap-2 col-6 mx-auto" style="margin-top: 20rem;">
+        <a class="btn btn-success" type="button" routerLink="/garantiaClientes/vista">Garantias Clientes</a>
+        <a class="btn btn-success" type="button" routerLink="/garantiaadmin/vista">Garantia Admin</a>
+    </div>
+
+
+</div>

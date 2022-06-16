@@ -1,0 +1,74 @@
+<!--
+    .color1 {color: #ff00aa;}
+.color2 {color: #ff5f53;}
+.color3 {color: #ffcf41;}
+.color4 {color: #f1ffa1;}
+.color5 {color: #acffff;}
+-->
+
+<div class="container" style="margin-top: 3rem; margin-bottom: 2rem;">
+    <div class="row" style="text-align: center;">
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem; background-color: #acffff;">
+                <div class="card-body">
+                    <p class="card-text">0 <br><i class="fa-solid fa-users"></i> Usuarios.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem; background-color: #f1ffa1;">
+                <div class="card-body">
+                    <p class="card-text">0 <br><i class="fa-solid fa-hammer"></i> Administradores.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem; background-color: #ffcf41;">
+                <div class="card-body">
+                    <p class="card-text">0 <br><i class="fa-solid fa-truck-field"></i> Proovedores.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem; background-color: #ff5f53;">
+                <div class="card-body">
+                    <p class="card-text">0 <br><i class="fa-solid fa-clipboard-check"></i> Total.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-success table-striped" style="margin-top: 5rem;">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Apellido Paterno</th>
+                <th scope="col">Rol</th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let usuario of usuarios">
+                <th scope="row">{{usuario.id}}</th>
+
+                <td>{{usuario.nombre}}</td>
+                <td>{{usuario.apellidop}}</td>
+                <div *ngIf="usuario.tipo_usuario == 1">
+                    <td>Administrador</td>
+                </div>
+                <div *ngIf="usuario.tipo_usuario == 2">
+                    <td>Proovedor</td>
+                </div>
+                <div *ngIf="usuario.tipo_usuario == 3">
+                    <td>Usuario</td>
+                </div>
+                <td><button type="button" class="btn-danger" (click)="deleteUsuarios(usuario.id)">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+
+</div>

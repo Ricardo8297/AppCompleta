@@ -1,0 +1,202 @@
+2R0i0C0A1r0d3M
+
+npm init --yes
+npm i express morgan promise-mysql cors
+
+
+tsc -- init
+
+#tscongif
+"outDir": "./build", 
+
+#para convertirlo a js
+tsc
+
+#package json
+#que lo convierta por mi
+"build": "tsc -w"
+
+
+npm build run
+
+#nueva terminal
+ cd server
+
+
+ #server nodemon
+ npm i nodemon -D
+
+
+
+#package json
+"dev": "nodemon build/index.js"
+
+#tenemos dos terminales hasta ahora
+#se sube a internet la carpeta build
+
+#index ts
+import express from 'express';
+#nueva terminal
+npm i @types/express -D
+
+#seconfigura  el server
+#se crea un nuevo archivo
+src/routes/indexRoutes.ts
+src/routes/gamesRoutes.ts
+ 
+
+#las importamos el index .ts
+
+
+#Configuramos los de la /routes
+
+#agregamos morgan y cors
+
+npm i @types/morgan @types/cors -D 
+
+#se agregan en config de ts
+
+#se crea la base de datos
+
+#se crea el archivo database.ts y keys.ts
+#se ponen las configuraciones de la base de datos en keys.ts
+
+#se importan al archivo de database.ts
+
+#configuramos y se puede usar en la seccion de routes
+
+#por orden en el servidor creamos /controllers
+
+#creamos los controladores en controllers
+
+#los importamos a su cprrespondiente routes p/e indexRoutes.ts
+
+#Conexión a la base de datos MySQL: 45:08
+
+
+#RestAPI
+#En ../gamesRoutes y ../gamesController
+
+#Abrimos postman
+
+#en gamesController creamos un nuevo metodo
+
+#y lo mandamos a traer en gamesRoutes y asi con post, put ,delete 
+
+#se prueban las peticiones con POSTMAN
+
+
+
+class GamesController{
+   public list (req: Request,res: Response) { 
+       res.json({text: 'Creating a new game'})
+    }
+
+    public getOne (req: Request,res: Response) { 
+      res.json({text: 'Este es el juego ID: ' + req.params.id})
+   }
+
+    public create (req: Request,res: Response){
+      res.json({text: 'Creating a new game'})
+    }
+
+
+    public update (req: Request,res: Response){
+      res.json({text: 'Updating ID: ' + req.params.id})
+    }
+
+    public delete (req: Request,res: Response){
+      res.json({text: 'Eliminando ID: ' + req.params.id})
+    }
+
+   
+}
+
+
+#Queremos recibir datos en el metodo ponemos
+
+console.log(req.body)
+
+#para verlo, pero para almacenarlo debemos de hacer una consulta a la DB
+
+
+#antes
+
+public create (req: Request,res: Response){
+      console.log(req.body);
+      res.json({text: 'Creating a new game'});
+    }
+
+#Despues
+
+public async create (req: Request,res: Response): Promise<void>{
+      console.log(req.body);
+      await pool.query('INSERT INTO games set ?',[req.body])
+      res.json({Message: 'Juego Guardado'});
+    } 
+
+
+#Nota: el : Promise<void> no es necesario solo es para ser mas explicito
+
+
+#los metodos asincronos son para que no se pare la aplicacion 
+#se se pone al query await y el metodo async
+
+{
+    "title": "Terraria",
+    "description": "Es God",
+    "image": "https://static.wikia.nocookie.net/terraria/images/f/fa/Terrarialogo.jpg/revision/latest?cb=20180414173844&path-prefix=es"
+}
+
+{
+    "title": "Minecraft",
+        "description": "PC el mejor juego del world",
+        "image": "https://fs-prod-cdn.nintendo-europe.com/media/images/10_share_images/games_15/nintendo_switch_4/H2x1_NSwitch_Minecraft.jpg"
+}
+
+
+
+#########################################################################################################################################################
+
+
+#FRONT-END 
+
+
+ng new SCV --routing
+cd SCV
+ng g c components/navigation
+ng g c components/game-form
+ng g c components/game-list   
+
+ng g s services/games 
+
+#creamos la carpeta modules con el games.ts para modelar los datos
+
+#les creamos sus rutas sus htmls (navbar etc)
+
+#en app.module.ts importamos 
+
+providers: [
+    GamesService
+  ],
+
+#en games.services.ts
+
+import { HttpClient } from '@angular/common/http'
+
+
+#creamos los metodos etc checar el doc valla
+
+#se xrea el tipo de dato para usarse, este va en games.ts
+# se pone id?: number el ? es para decir que no es de ahuevo
+#lo importamos a games.services
+
+importamos a app.module
+import { HttpClientModule } from '@angular/common/http'
+imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule
+  ],
+
+  #2:35
